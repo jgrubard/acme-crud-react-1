@@ -16,6 +16,12 @@ app.get('/api/users', (req, res, next) => {
     .catch(next);
 })
 
+app.get('/api/users/:id', (req, res, next) => {
+  User.findById(req.params.id)
+    .then(user => res.json(user))
+    .catch(next);
+})
+
 app.get('/', (req, res, next) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
